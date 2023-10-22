@@ -32,6 +32,11 @@ def update_genre():
             name = input("Enter the genre's name: ")
             genre.name = name
             genre.update()
+            print(f"Success: {genre}")
+        except Exception as exc:
+            print("Error updating genre: ")
+    else:
+        print(f"Genre {_id} not found.")
 
 def exit_program():
     print("Goodbye!")

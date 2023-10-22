@@ -48,3 +48,20 @@ class Genre:
         CONN.commit()
         self.id = CURSOR.lastrowid
         type(self).all[self.id] = self
+
+    @classmethod
+    def create(cls, name):
+        genre = cls(name)
+        genre.save()
+        return genre
+
+    def update(self):
+        sql = """
+            UPDATE genres
+            SET name = ?
+            WHERE id = ?
+        """
+        CURSOR.execute(sql, (self.name, self.id))
+        CONN.commit()
+
+    

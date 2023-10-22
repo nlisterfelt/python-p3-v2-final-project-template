@@ -95,5 +95,9 @@ class Movie:
         del type(self).add[self.id]
         self.id = None
 
-        
+    @classmethod
+    def create(cls, title, run_time, genre_id):
+        movie = cls(title, run_time, genre_id)
+        movie.save()
+        return movie
     

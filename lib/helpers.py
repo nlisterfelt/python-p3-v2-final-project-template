@@ -61,6 +61,16 @@ def find_movie_by_title():
     movie = Movie.find_by_title(movie)
     print(movie) if movie else print(f"Movie {title} not found.")
 
+def create_movie():
+    title = input("Enter the movie's title: ")
+    run_time = input("Enter the movie's run-time in minutes: ")
+    genre_id = input("Enter the movie's genre id: ")
+    try: 
+        movie = Movie.create(title, run_time, genre_id)
+        print(f"Success: {movie}")
+    except Exception as exc:
+        print("Error creating movie: ", exc)
+
 
 
 def exit_program():

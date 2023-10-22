@@ -51,6 +51,12 @@ def list_movies():
     for movie in movies:
         print(movie)
 
+def find_movie_by_id():
+    _id = input("Enter the movie's id: ")
+    movie = Movie.find_by_id(_id)
+    print(movie) if movie else print(f"Movie {_id} not found.")
+
+
 
 def exit_program():
     print("Goodbye!")

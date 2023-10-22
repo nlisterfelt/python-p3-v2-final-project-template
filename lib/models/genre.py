@@ -64,4 +64,32 @@ class Genre:
         CURSOR.execute(sql, (self.name, self.id))
         CONN.commit()
 
-    
+    def delete(self):
+        sql = """
+            DELETE FROM genres
+            WHERE id = ?
+        """
+        CURSOR.execute(sql, (self.id,))
+        CONN.commit()
+        del type(self).all[self.id]
+        self.id = None
+
+    @classmethod
+    def instance_from_db(cls, row):
+        genre = cls.all.get(row[0])
+        if genre:
+            genre.name = row[1]
+        else:
+            genre = cls(row[1])
+            genre.id = row[0]
+            cls.all[genre.id] = genre
+        return genre
+
+    @classmethod
+    def get_all(cls):
+        sql = """
+            SELECT *
+            FROM genres
+        """
+        rows = CURSOR.execute(sql).fetchall()
+        return [cls.instance_from_db(row) for row in rows]    

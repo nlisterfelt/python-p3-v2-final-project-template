@@ -84,3 +84,16 @@ class Movie:
         """
         CURSOR.execute(sql, (self.title, self.run_time, self.genre_id, self.id))
         CONN.commit()
+
+    def delete(self):
+        sql = """
+            DELETE FROM movies
+            WHERE id = ?
+        """
+        CURSOR.execute(sql, (self.id,))
+        CONN.commit()
+        del type(self).add[self.id]
+        self.id = None
+
+        
+    

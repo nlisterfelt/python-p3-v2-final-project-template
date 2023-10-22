@@ -40,4 +40,11 @@ class Genre:
         CONN.commit()
 
     def save(self):
-        
+        sql = """
+            INSERT INTO genres (name)
+            VALUES (?,)
+        """
+        CURSOR.execute(sql, (self.name,))
+        CONN.commit()
+        self.id = CURSOR.lastrowid
+        type(self).all[self.id] = self

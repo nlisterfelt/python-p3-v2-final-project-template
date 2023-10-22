@@ -17,6 +17,13 @@ def find_genre_by_name():
     genre = Genre.find_by_name(name)
     print(genre) if genre else print(f"Genre {name} not found.")
 
+def create_genre():
+    name = input("Enter the genre's name: ")
+    try: 
+        genre = Genre.create(name)
+        print(f"Success: {genre}")
+    except Exception as exc:
+        print("Error creating genre: ", exc)
 
 def exit_program():
     print("Goodbye!")

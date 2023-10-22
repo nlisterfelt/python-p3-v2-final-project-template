@@ -34,4 +34,30 @@ class Movie:
         else:
             raise ValueError("Run-time must me an integer above 0 representing minutes.")
 
-    
+    @property
+    def genre_id(self):
+        return self._genre_id
+
+    @genre_id.setter
+    def genre_id(self, genre_id):
+        if isinstance(genre_id, int) and Genre.find_by_id(genre_id):
+            self._genre_id = genre_id
+        else:
+            raise ValueError("genre_id must refrence a genre in the database.")
+
+    @classmethod
+    def create_table(cls):
+        sql = """
+            CREATE TABLE IF NOT EXISTS movies (
+                id INTEGER PRIMARY KEY,
+                title TEXT,
+                run_time INTEGER,
+                genre_id INTEGER,
+                FOREIGN KEY (genre_id) REFRENCES genres(id))
+        """
+        CURSOR.execute(sql)
+        CONN.commit()
+
+    @classmethod
+    def drop_table(cls):
+        

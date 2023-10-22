@@ -46,6 +46,12 @@ def delete_genre():
     else:
         print(f"Genre {_id} not found.")
 
+def list_movies():
+    movies = Movie.get_all()
+    for movie in movies:
+        print(movie)
+
+
 def exit_program():
     print("Goodbye!")
     exit()

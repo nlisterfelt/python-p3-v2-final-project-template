@@ -38,6 +38,14 @@ def update_genre():
     else:
         print(f"Genre {_id} not found.")
 
+def delete_genre():
+    _id = input("Enter the genre's id: ")
+    if genre := Genre.find_by_id(_id):
+        genre.delete()
+        print(f"Success {_id} deleted.")
+    else:
+        print(f"Genre {_id} not found.")
+
 def exit_program():
     print("Goodbye!")
     exit()

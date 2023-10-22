@@ -92,4 +92,34 @@ class Genre:
             FROM genres
         """
         rows = CURSOR.execute(sql).fetchall()
-        return [cls.instance_from_db(row) for row in rows]    
+        return [cls.instance_from_db(row) for row in rows]  
+
+    @classmethod
+    def find_by_id(cls, id):
+        sql = """
+            SELECT *
+            FROM genres
+            WHERE id = ?
+        """
+        row = CURSOR.execute(sql, (id,)).fetchone()
+        return cls.instance_from_db(row) if row else None
+
+    @classmethod
+    def find_by_name(cls, name):
+        sql = """
+            SELECT *
+            FROM genres
+            WHERE name = ?
+        """
+        row = CURSOR.execute(sql, (name,)).fetchone()
+        return cls.instance_from_db(row) if row else None
+
+    def movies(self):
+        from models.movie import Movie
+        sql = """
+            SELECT * FROM movies
+            WHERE genre_id = ?
+        """
+        CURSOR.execute(sql, (self.id,))
+        rows = CURSOR.fetchall()
+        return [Movie.instance_from_db(row) for row in rows]

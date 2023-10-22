@@ -143,4 +143,12 @@ class Movie:
         row = CURSOR.execute(sql, (title,)).fetchone()
         return cls.instance_from_db(row) if row else None
 
-        
+    @classmethod
+    def find_at_least_run_time(cls, run_time):
+        sql = """
+            SELECT *
+            FROM movies
+            WHERE run_time >= ?
+        """
+        rows = CURSOR.execute(sql, (run_time,)).fetchall()
+        return[cls.instance_from_db(row) for row in rows]

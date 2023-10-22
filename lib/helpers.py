@@ -71,6 +71,23 @@ def create_movie():
     except Exception as exc:
         print("Error creating movie: ", exc)
 
+def update_movie():
+    _id = input("Enter the movie's id: ")
+    if movie := Movie.find_by_id(_id):
+        try: 
+            title = input("Enter the movie's title: ")
+            movie.title = title
+            run_time = input("Enter the movie's run-time in minutes: ")
+            movie.run_time = run_time
+            genre_id = input("Enter the movie's genre id: ")
+            movie.genre_id = genre_id
+            movie.update()
+            print(f"Success: {movie}")
+        except Exception as exc:
+            print("Error updating movie: ")
+    else:
+        print(f"Movie {_id} not found.")
+
 
 
 def exit_program():

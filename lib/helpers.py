@@ -25,6 +25,14 @@ def create_genre():
     except Exception as exc:
         print("Error creating genre: ", exc)
 
+def update_genre():
+    _id = input("Enter the genre's id: ")
+    if genre := Genre.find_by_id(_id):
+        try: 
+            name = input("Enter the genre's name: ")
+            genre.name = name
+            genre.update()
+
 def exit_program():
     print("Goodbye!")
     exit()

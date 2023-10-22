@@ -56,6 +56,11 @@ def find_movie_by_id():
     movie = Movie.find_by_id(_id)
     print(movie) if movie else print(f"Movie {_id} not found.")
 
+def find_movie_by_title():
+    title = input("Enter the movie's title: ")
+    movie = Movie.find_by_title(movie)
+    print(movie) if movie else print(f"Movie {title} not found.")
+
 
 
 def exit_program():

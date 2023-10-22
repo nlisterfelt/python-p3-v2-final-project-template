@@ -76,4 +76,11 @@ class Movie:
         self.id = CURSOR.lastrowid
         type(self).all[self.id] = self
 
-        
+    def update(self):
+        sql = """
+            UPDATE movies
+            SET title = ?, run_time = ?, genre_id = ?
+            WHERE id = ?
+        """
+        CURSOR.execute(sql, (self.title, self.run_time, self.genre_id, self.id))
+        CONN.commit()

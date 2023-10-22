@@ -114,4 +114,13 @@ class Movie:
             cls.all[movie.id] = movie
         return movie
 
-        
+    @classmethod
+    def get_all(cls):
+        sql = """
+            SELECT * 
+            FROM movies
+        """
+        rows = CURSOR.execute(sql).fetchall()
+        return [cls.instance_from_db(row) for row in rows]
+
+    

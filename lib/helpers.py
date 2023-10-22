@@ -8,11 +8,14 @@ def list_genres():
         print(genre)
 
 def find_genre_by_id():
-    _id = input("Enter the movie's id: ")
+    _id = input("Enter the genre's id: ")
     genre = Genre.find_by_id(_id)
     print(genre) if genre else print(f"Genre {_id} not found.")
 
-    
+def find_genre_by_name():
+    name = input("Enter the genre's name: ")
+    genre = Genre.find_by_name(name)
+    print(genre) if genre else print(f"Genre {name} not found.")
 
 
 def exit_program():

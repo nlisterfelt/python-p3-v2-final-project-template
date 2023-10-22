@@ -66,4 +66,14 @@ class Movie:
         CURSOR.execute(sql)
         CONN.commit()
 
-    
+    def save(self):
+        sql = """
+            INSERT INTO movies (title, run_time, genre_id)
+            VALUES (?, ?, ?)
+        """
+        CURSOR.execute(sql, (title, run_time, genre_id))
+        CONN.commit()
+        self.id = CURSOR.lastrowid
+        type(self).all[self.id] = self
+
+        

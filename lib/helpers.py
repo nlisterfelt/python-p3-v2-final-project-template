@@ -88,7 +88,13 @@ def update_movie():
     else:
         print(f"Movie {_id} not found.")
 
-
+def delete_movie():
+    _id = input("Enter the movie's id: ")
+    if move := Movie.find_by_id(_id):
+        movie.delete()
+        print(f"Success {_id} deleted.")
+    else:
+        print(f"Movie {_id} not found.")
 
 def exit_program():
     print("Goodbye!")

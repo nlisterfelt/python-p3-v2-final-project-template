@@ -101,3 +101,17 @@ class Movie:
         movie.save()
         return movie
     
+    @classmethod
+    def instance_from_db(self, row):
+        movie = cls.all.get(row[0])
+        if movie:
+            movie.title = row[1]
+            movie.run_time = row[2]
+            movie.genre_id = row[3]
+        else:
+            movie = cls(row[1], row[2], row[3])
+            movie.id = row[0]
+            cls.all[movie.id] = movie
+        return movie
+
+        

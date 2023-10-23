@@ -59,13 +59,16 @@ def main():
 ''')
                         genre_menu()
                         genre_choice = input("> ")
-                        if genre_choice == "i":
-                            print("ok")
+                        if genre_choice == "i" or genre_choice == "n":
+                            if genre_choice == "i":
+                                print("I will change this to find movie by id.")
+                            else:
+                                print("I will change this to find movie by name.")
                         elif genre_choice == "e":
                             exit_program()
                         elif genre_choice == "m":
-                            all_genre_choice = "m"
                             print("Back to Main Menu")
+                            all_genre_choice = "m"
                         else:
                             print("Invalid choice")
                 elif all_genre_choice == "c":
@@ -100,15 +103,16 @@ def main():
             
 ~~~~~~~~~~~~~~~~
 ''')
+                all_menu()
                 all_movie_choice = input("> ")
 
-                if all_movie_choice = "u":
+                if all_movie_choice == "u":
                     update_movie()
-                elif all_movie_choice = "d":
+                elif all_movie_choice == "d":
                     delete_movie()
-                elif all_movie_choice = "m":
+                elif all_movie_choice == "m":
                     print("Back to Main Menu")
-                elif all_movie_choice = "e":
+                elif all_movie_choice == "e":
                     exit_program()
                 else:
                     print("Invalid choice")

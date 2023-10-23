@@ -42,7 +42,7 @@ class Genre:
     def save(self):
         sql = """
             INSERT INTO genres (name)
-            VALUES (?,)
+            VALUES (?)
         """
         CURSOR.execute(sql, (self.name,))
         CONN.commit()

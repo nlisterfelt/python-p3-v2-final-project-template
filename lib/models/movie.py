@@ -53,7 +53,7 @@ class Movie:
                 title TEXT,
                 run_time INTEGER,
                 genre_id INTEGER,
-                FOREIGN KEY (genre_id) REFRENCES genres(id))
+                FOREIGN KEY (genre_id) REFERENCES genres(id))
         """
         CURSOR.execute(sql)
         CONN.commit()
@@ -71,7 +71,7 @@ class Movie:
             INSERT INTO movies (title, run_time, genre_id)
             VALUES (?, ?, ?)
         """
-        CURSOR.execute(sql, (title, run_time, genre_id))
+        CURSOR.execute(sql, (self.title, self.run_time, self.genre_id))
         CONN.commit()
         self.id = CURSOR.lastrowid
         type(self).all[self.id] = self

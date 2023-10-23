@@ -46,7 +46,17 @@ def main():
 
         #Entering genre edit menu
         elif choice =="2":
-            pass
+            _id = int(input("Enter the genre's id: "))
+            genre = find_genre_by_id(_id)
+            movie_choice = 0
+            while movie_choice != "m":
+                print(genre)
+                print('''
+
+-----List of Movies in this Genre-----''')
+                
+                genre_edit_menu()
+
         #Entering genre edit menu
         elif choice =="3":
             pass

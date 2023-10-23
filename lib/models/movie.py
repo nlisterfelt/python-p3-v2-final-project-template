@@ -152,3 +152,13 @@ class Movie:
         """
         rows = CURSOR.execute(sql, (run_time,)).fetchall()
         return[cls.instance_from_db(row) for row in rows]
+
+    @classmethod
+    def find_movies_by_genre(cls, genre):
+        sql = """
+            SELECT *
+            FROM movies
+            WHERE genre = ?
+        """
+        rows = CURSOR.execute(sql, (genre,)).fetchall()
+        return[cls.instance_from_db(row) for row in rows]

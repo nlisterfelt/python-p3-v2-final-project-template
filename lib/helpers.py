@@ -8,7 +8,7 @@ def list_genres():
         print(f"{genre.id}: {genre.name}")
 
 def find_genre_by_id(_id):
-    genre = Genre.find_by_id(_id)
+    genre = Genre.find_by_id(_id).name
     print(genre) if genre else print(f"Genre {_id} not found.")
 
 def find_genre_by_name():
@@ -49,6 +49,11 @@ def list_movies():
     movies = Movie.get_all()
     for movie in movies:
         print(movie)
+
+def list_movies_by_genre(genre):
+    movies = Movie.find_movies_by_genre(genre)
+    for movie in movies:
+        print(f"{movie.id}: {movie.title}")
 
 def find_movie_by_id():
     _id = input("Enter the movie's id: ")

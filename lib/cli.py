@@ -76,8 +76,29 @@ def main():
                     exit_program()
                 else:
                     print("Invalid choice")
-        elif choice == "3":
-            find_movies_by_run_time()
+        elif choice == "2" or choice == "3":
+            if choice == "2":
+                print('''
+~~~~~Movies~~~~~
+
+''')
+                list_movies()
+                print('''
+            
+~~~~~~~~~~~~~~~~
+''')
+            else: 
+                run_time = input("Enter a number of minutes to see all movies with a run time of at least this number: ")
+                print(f'''
+~~~~~Movies with a run time of at least {run_time} mins~~~~~
+
+''')
+                find_movies_by_run_time(run_time)
+                print('''
+            
+~~~~~~~~~~~~~~~~
+''')
+            
         elif choice == "e":
             exit_program()
         else:
@@ -118,6 +139,7 @@ def genre_menu():
     n. Enter name for more details 
     u. Update
     d. delete
+    g. Back to Genre Menu
     m. Back to Main Menu
     e. Exit the program
 
@@ -130,6 +152,7 @@ def movie_menu():
     Select an option:
     u. Update
     d. delete
+    v. Back to Movie Menu
     m. Back to Main Menu
     e. Exit the program
 

@@ -45,10 +45,12 @@ def main():
                 else:
                     find_genre_by_id(int(genre_choice))
 
-        #Entering genre edit menu
-        elif choice =="2":
-            _id = int(input("Enter the genre's id: "))
-            genre = find_genre_by_id(_id)
+        #Entering genre edit menu by id
+        elif choice =="2" or choice == "3":
+            if choice == "2":
+                genre = find_genre_by_id()
+            else:
+                genre = find_genre_by_name()
             movie_choice = 0
             while movie_choice != "m":
                 print(f'''
@@ -56,7 +58,7 @@ def main():
         Genre: {genre.name}
 
 -----List of Movies in this Genre-----''')
-                list_movies_by_genre(_id)
+                list_movies_by_genre(genre.id)
                 genre_edit_menu()
 
                 movie_choice = input("> ")
@@ -65,15 +67,12 @@ def main():
                 elif movie_choice == "m":
                     print("Back to main menu.")
                 elif movie_choice == "u":
-                    update_genre(_id)
+                    update_genre(genre.id)
                 elif movie_choice == "d":
-                    delete_genre(_id)
+                    delete_genre(genre.id)
                 else:
                     print("Invalid choice")
 
-        #Entering genre edit menu
-        elif choice =="3":
-            pass
         #Entering all movie menu
         elif choice =="4":
             pass

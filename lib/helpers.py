@@ -7,7 +7,8 @@ def list_genres():
     for genre in genres:
         print(f"{genre.id}: {genre.name}")
 
-def find_genre_by_id(_id):
+def find_genre_by_id():
+    _id = int(input("Enter the genre's id: "))
     genre = Genre.find_by_id(_id)
     if genre:
         return genre
@@ -17,7 +18,10 @@ def find_genre_by_id(_id):
 def find_genre_by_name():
     name = input("Enter the genre's name: ")
     genre = Genre.find_by_name(name)
-    print(genre) if genre else print(f"Genre {name} not found.")
+    if genre:
+        return genre
+    else:
+        print(f"Genre {name} not found.")
 
 def create_genre():
     name = input("Enter the genre's name: ")

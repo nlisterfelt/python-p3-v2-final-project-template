@@ -37,7 +37,27 @@ def main():
             
 ~~~~~~~~~~~~~~~~
 ''')
+            more_detail_menu()
+            genre_choice = input("> ")
+
+            if genre_choice == "i":
+                genre = find_genre_by_id()
+                movie_choice = 0
+
+                while movie_choice !="m":
+                    print('''
+~~~~~Movies~~~~~
+
+''')
+                    find_movies_by_genre(genre.id)
+                    print('''
             
+~~~~~~~~~~~~~~~~
+''')
+                    more_detail_menu()
+                    movie_choice = input("> ")
+            else:
+                print("Invalid choice")
         elif choice == "e":
             exit_program()
         else:

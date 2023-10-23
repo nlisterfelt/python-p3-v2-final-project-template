@@ -40,8 +40,11 @@ def main():
             more_detail_menu()
             genre_choice = input("> ")
 
-            if genre_choice == "i":
-                genre = find_genre_by_id()
+            if genre_choice == "i" or genre_choice == "n":
+                if genre_choice == "i":
+                    genre = find_genre_by_id()
+                else:
+                    genre = find_genre_by_name()
                 movie_choice = 0
 
                 while movie_choice !="m":

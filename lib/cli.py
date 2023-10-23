@@ -19,9 +19,49 @@ from helpers import (
 
 
 def main():
-    while True:
-        menu()
+    choice = "0"
+    while choice != "e":
+        print("********************")
+        print("Main Menu")
+        main_menu()
+        print("********************")
         choice = input("> ")
+        if choice == "1":
+            list_genres()
+        elif choice == "e":
+            exit_program()
+        else:
+            print("Invalid choice")
+
+
+def main_menu():
+    print("Please select an option:")
+    print("1. List all genres.")
+    print("e. Exit the program.")
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+"""        
+    print("Please select an option:")
+    print("0. Exit the program")
+    print("1. List all genres.")
+    print("2. Find a genre by id.")
+    print("3. Find a genre by name.")
+    print("4. Create a genre.")
+    print("5. Update a genre.")
+    print("6. Delete a genre.")
+    print("7. List all movies.")
+    print("8. Find a movie by id.")
+    print("9. Find a movie by title.")
+    print("10. Find all movies greater than or equal to a run-time.")
+    print("11. Create a movie.")
+    print("12. Update a movie.")
+    print("13. Delete a movie.")
+    
         if choice == "0":
             exit_program()
         elif choice == "1":
@@ -50,27 +90,4 @@ def main():
             update_movie()
         elif choice == "13":
             delete_movie()
-        else:
-            print("Invalid choice")
-
-
-def menu():
-    print("Please select an option:")
-    print("0. Exit the program")
-    print("1. List all genres.")
-    print("2. Find a genre by id.")
-    print("3. Find a genre by name.")
-    print("4. Create a genre.")
-    print("5. Update a genre.")
-    print("6. Delete a genre.")
-    print("7. List all movies.")
-    print("8. Find a movie by id.")
-    print("9. Find a movie by title.")
-    print("10. Find all movies greater than or equal to a run-time.")
-    print("11. Create a movie.")
-    print("12. Update a movie.")
-    print("13. Delete a movie.")
-
-
-if __name__ == "__main__":
-    main()
+"""

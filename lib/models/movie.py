@@ -29,7 +29,7 @@ class Movie:
 
     @run_time.setter
     def run_time(self, run_time):
-        if type(run_time) is int and run_time>0:
+        if isinstance(run_time, int) and run_time>0:
             self._run_time = run_time
         else:
             raise ValueError("Run-time must me an integer above 0 representing minutes.")
@@ -40,7 +40,7 @@ class Movie:
 
     @genre_id.setter
     def genre_id(self, genre_id):
-        if type(genre_id) is int and Genre.find_by_id(genre_id):
+        if Genre.find_by_id(genre_id):
             self._genre_id = genre_id
         else:
             raise ValueError("genre_id must refrence a genre in the database.")

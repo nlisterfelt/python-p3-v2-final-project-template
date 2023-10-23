@@ -62,13 +62,13 @@ def find_movie_by_title():
     print(movie) if movie else print(f"Movie {title} not found.")
 
 def find_movies_by_run_time():
-    run_time = input("Enter a number of minutes to see all movies with a runtime of at least this number: ")
+    run_time = input("Enter a number of minutes to see all movies with a run time of at least this number: ")
     movies = Movie.find_at_least_run_time(run_time)
     print(movies) if movies else print(f"No movies found with a run-time of at least {run_time}")
 
 def create_movie():
     title = input("Enter the movie's title: ")
-    run_time = input("Enter the movie's run-time in minutes: ")
+    run_time = int(input("Enter the movie's run-time in minutes: "))
     genre_id = input("Enter the movie's genre id: ")
     try: 
         movie = Movie.create(title, run_time, genre_id)
@@ -82,7 +82,7 @@ def update_movie():
         try: 
             title = input("Enter the movie's title: ")
             movie.title = title
-            run_time = input("Enter the movie's run-time in minutes: ")
+            run_time = int(input("Enter the movie's run-time in minutes: "))
             movie.run_time = run_time
             genre_id = input("Enter the movie's genre id: ")
             movie.genre_id = genre_id

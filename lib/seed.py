@@ -8,7 +8,10 @@ def seed_database():
     Genre.create_table()
     Movie.create_table()
     rom_com = Genre.create("Romantic comedy")
+    action = Genre.create("Action")
     Movie.create("The Proposal", 108, rom_com.id)
+    Movie.create("27 Dresses", 111, rom_com.id)
+    Movie.create("Blue Beetle", 127, action.id)
 
 seed_database()
 print("Seeded database.")

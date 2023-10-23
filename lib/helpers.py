@@ -89,13 +89,13 @@ def update_movie():
             movie.update()
             print(f"Success: {movie}")
         except Exception as exc:
-            print("Error updating movie: ")
+            print("Error updating movie: ", exc)
     else:
         print(f"Movie {_id} not found.")
 
 def delete_movie():
     _id = input("Enter the movie's id: ")
-    if move := Movie.find_by_id(_id):
+    if movie := Movie.find_by_id(_id):
         movie.delete()
         print(f"Success {_id} deleted.")
     else:

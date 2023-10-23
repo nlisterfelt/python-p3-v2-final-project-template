@@ -92,7 +92,7 @@ class Movie:
         """
         CURSOR.execute(sql, (self.id,))
         CONN.commit()
-        del type(self).add[self.id]
+        del type(self).all[self.id]
         self.id = None
 
     @classmethod

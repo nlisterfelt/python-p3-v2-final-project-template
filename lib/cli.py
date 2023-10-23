@@ -65,6 +65,8 @@ def main():
                             exit_program()
                         else:
                             print("Invalid choice")
+                elif genre_choice == "c":
+                    create_genre()
                 elif genre_choice == "e":
                     exit_program()
                 else:

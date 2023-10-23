@@ -62,7 +62,9 @@ def main_menu():
     2. Find genre by id.
     3. Find genre by name.
     4. List all movies.
-    5. Find all movies with at least the run-time entered.
+    5. Find movie by id.
+    6. Find movie by title.
+    7. Find all movies with at least the run-time entered.
     e. Exit the program.
 
 *******************
@@ -73,7 +75,7 @@ def all_genre_menu():
     print('''
 -----Genre Menu-----
 
-    Enter genre id.
+    Enter genre id to see more details.
 
     OR
 
@@ -88,7 +90,7 @@ def all_movie_menu():
     print('''
 -----Movie Menu-----
 
-    Enter Movie id.
+    Enter Movie id to see more details.
 
     OR
 
@@ -99,13 +101,29 @@ def all_movie_menu():
                 
 --------------------''')
 
-def edit_menu():
+def genre_edit_menu():
+    print('''
+~~~~~Edit Menu~~~~~
+
+    Enter Movie id to see more details.
+
+    OR
+ 
+    Select an option:
+    u. Update genre
+    d. Delete genre
+    m. Main Menu
+    e. Exit the program.
+                
+~~~~~~~~~~~~~~~~~~~~''')
+
+def movie_edit_menu():
     print('''
 ~~~~~Edit Menu~~~~~
 
     Select an option:
-    u. Update
-    d. Delete
+    u. Update movie
+    d. Delete movie
     m. Main Menu
     e. Exit the program.
                 

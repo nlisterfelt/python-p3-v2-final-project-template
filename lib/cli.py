@@ -25,7 +25,31 @@ def main():
         if choice == "0":
             exit_program()
         elif choice == "1":
-            helper_1()
+            list_genres()
+        elif choice == "2":
+            find_genre_by_id()
+        elif choice == "3":
+            find_genre_by_name()
+        elif choice == "4":
+            create_genre()
+        elif choice == "5":
+            update_genre()
+        elif choice == "6":
+            delete_genre()
+        elif choice == "7":
+            list_movies()
+        elif choice == "8":
+            find_movie_by_id()
+        elif choice == "9":
+            find_movie_by_title()
+        elif choice == "10":
+            find_movies_by_run_time()
+        elif choice == "11":
+            create_movie()
+        elif choice == "12":
+            update_movie()
+        elif choice == "13":
+            delete_movie()
         else:
             print("Invalid choice")
 

@@ -21,13 +21,24 @@ from helpers import (
 def main():
     choice = "0"
     while choice != "e":
-        print("********************")
-        print("Main Menu")
-        main_menu()
-        print("********************")
-        choice = input("> ")
+        if choice == "0":
+            print("*****Main Menu*****")
+            print("Please select an option:")
+            print("1. List all genres.")
+            print("e. Exit the program.")
+            print("*******************")
+            choice = input("> ")
+        
+        #Entering genres module
         if choice == "1":
+            genre_choice = "0"
+            print("-----Genre Menu-----")
+            print("Select an option:")
             list_genres()
+            print("c. Create new genre.")
+            print("n. Find genre by name.")
+            print("m. Main Menu")
+            print("e. Exit the program.")
         elif choice == "e":
             exit_program()
         else:
@@ -35,9 +46,7 @@ def main():
 
 
 def main_menu():
-    print("Please select an option:")
-    print("1. List all genres.")
-    print("e. Exit the program.")
+
 
 
 if __name__ == "__main__":

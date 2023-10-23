@@ -5,7 +5,7 @@ from models.movie import Movie
 def list_genres():
     genres = Genre.get_all()
     for genre in genres:
-        print(genre)
+        print(f"{genre.id}: {genre.name}")
 
 def find_genre_by_id():
     _id = input("Enter the genre's id: ")

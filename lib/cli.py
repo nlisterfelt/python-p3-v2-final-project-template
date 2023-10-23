@@ -77,28 +77,41 @@ def main():
                 else:
                     print("Invalid choice")
         elif choice == "2" or choice == "3":
-            if choice == "2":
-                print('''
+            all_movie_choice = 0
+            while all_movie_choice != "m":
+                if choice == "2":
+                    print('''
 ~~~~~Movies~~~~~
 
 ''')
-                list_movies()
-                print('''
+                    list_movies()
+                    print('''
             
 ~~~~~~~~~~~~~~~~
 ''')
-            else: 
-                run_time = input("Enter a number of minutes to see all movies with a run time of at least this number: ")
-                print(f'''
+                else: 
+                    run_time = input("Enter a number of minutes to see all movies with a run time of at least this number: ")
+                    print(f'''
 ~~~~~Movies with a run time of at least {run_time} mins~~~~~
 
 ''')
-                find_movies_by_run_time(run_time)
-                print('''
+                    find_movies_by_run_time(run_time)
+                    print('''
             
 ~~~~~~~~~~~~~~~~
 ''')
-            
+                all_movie_choice = input("> ")
+
+                if all_movie_choice = "u":
+                    update_movie()
+                elif all_movie_choice = "d":
+                    delete_movie()
+                elif all_movie_choice = "m":
+                    print("Back to Main Menu")
+                elif all_movie_choice = "e":
+                    exit_program()
+                else:
+                    print("Invalid choice")
         elif choice == "e":
             exit_program()
         else:

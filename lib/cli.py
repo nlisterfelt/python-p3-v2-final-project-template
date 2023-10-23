@@ -61,6 +61,8 @@ def main_menu():
     1. List all genres.
     2. Find genre by id.
     3. Find genre by name.
+    4. List all movies.
+    5. Find all movies with at least the run-time entered.
     e. Exit the program.
 
 *******************
@@ -68,15 +70,23 @@ def main_menu():
 ''')
 
 def genre_menu():
-    print(f'''
------Genre Menu-----
-ID: Name''')
-    list_genres()       
     print('''
-                        
+-----Genre Menu-----
+
     Select an option:
     c. Create new genre.
     n. Find genre by name.
+    m. Main Menu
+    e. Exit the program.
+                
+--------------------''')
+
+def movie_menu():
+    print('''
+-----Movie Menu-----
+
+    Select an option:
+    c. Create new movie.
     m. Main Menu
     e. Exit the program.
                 

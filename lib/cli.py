@@ -69,21 +69,28 @@ def main_menu():
 
 ''')
 
-def genre_menu():
+def all_genre_menu():
     print('''
 -----Genre Menu-----
 
+    Enter genre id.
+
+    OR
+
     Select an option:
     c. Create new genre.
-    n. Find genre by name.
     m. Main Menu
     e. Exit the program.
                 
 --------------------''')
 
-def movie_menu():
+def all_movie_menu():
     print('''
 -----Movie Menu-----
+
+    Enter Movie id.
+
+    OR
 
     Select an option:
     c. Create new movie.
@@ -91,3 +98,15 @@ def movie_menu():
     e. Exit the program.
                 
 --------------------''')
+
+def edit_menu():
+    print('''
+~~~~~Edit Menu~~~~~
+
+    Select an option:
+    u. Update
+    d. Delete
+    m. Main Menu
+    e. Exit the program.
+                
+~~~~~~~~~~~~~~~~~~~~''')

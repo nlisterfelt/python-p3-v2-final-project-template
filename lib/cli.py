@@ -26,7 +26,7 @@ def main():
         choice = input("> ")
         
         #Selecting a genre
-        if choice == "1" or choice == "2" or choice = "3":
+        if choice == "1":
            
         elif choice == "e":
             exit_program()
@@ -48,7 +48,21 @@ def main_menu():
 
 ''')
 
+def more_detail_menu():
+    print('''
 
+    Select an option:
+    i. Enter id for more details
+    n. Enter name for more details 
+    u. Update
+    c. Create new
+    d. Delete
+    m. Back to Main Menu
+    e. Exit the program
+
+----------------------
+
+''')
 
 
 if __name__ == "__main__":

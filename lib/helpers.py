@@ -58,7 +58,7 @@ def find_movie_by_id():
 
 def find_movie_by_title():
     title = input("Enter the movie's title: ")
-    movie = Movie.find_by_title(movie)
+    movie = Movie.find_by_title(title)
     print(movie) if movie else print(f"Movie {title} not found.")
 
 def find_movies_by_run_time():

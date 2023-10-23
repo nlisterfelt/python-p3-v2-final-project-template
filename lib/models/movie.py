@@ -3,25 +3,25 @@ from models.genre import Genre
 
 class Movie:
     all = {}
-    def __init__(self, title, run_time, genre_id, id=None):
+    def __init__(self, name, run_time, genre_id, id=None):
         self.id = id
-        self.title = title
+        self.name = name
         self.run_time = run_time
         self.genre_id = genre_id
 
     def __repr__(self):
-        return (f"<Movie {self.id}: {self.title}, {self.run_time} mins, Genre ID: {self.genre_id}>")
+        return (f"<Movie {self.id}: {self.name}, {self.run_time} mins, Genre ID: {self.genre_id}>")
 
     @property
-    def title(self):
-        return self._title
+    def name(self):
+        return self._name
 
-    @title.setter
-    def title(self, title):
-        if isinstance(title, str) and len(title):
-            self._title = title
+    @name.setter
+    def name(self, name):
+        if isinstance(name, str) and len(name):
+            self._name = name
         else:
-            raise ValueError("Title must be a non-empty string.")
+            raise ValueError("Name must be a non-empty string.")
 
     @property
     def run_time(self):
@@ -50,7 +50,7 @@ class Movie:
         sql = """
             CREATE TABLE IF NOT EXISTS movies (
                 id INTEGER PRIMARY KEY,
-                title TEXT,
+                name TEXT,
                 run_time INTEGER,
                 genre_id INTEGER,
                 FOREIGN KEY (genre_id) REFERENCES genres(id))
@@ -68,10 +68,10 @@ class Movie:
 
     def save(self):
         sql = """
-            INSERT INTO movies (title, run_time, genre_id)
+            INSERT INTO movies (name, run_time, genre_id)
             VALUES (?, ?, ?)
         """
-        CURSOR.execute(sql, (self.title, self.run_time, self.genre_id))
+        CURSOR.execute(sql, (self.name, self.run_time, self.genre_id))
         CONN.commit()
         self.id = CURSOR.lastrowid
         type(self).all[self.id] = self
@@ -79,10 +79,10 @@ class Movie:
     def update(self):
         sql = """
             UPDATE movies
-            SET title = ?, run_time = ?, genre_id = ?
+            SET name = ?, run_time = ?, genre_id = ?
             WHERE id = ?
         """
-        CURSOR.execute(sql, (self.title, self.run_time, self.genre_id, self.id))
+        CURSOR.execute(sql, (self.name, self.run_time, self.genre_id, self.id))
         CONN.commit()
 
     def delete(self):
@@ -96,8 +96,8 @@ class Movie:
         self.id = None
 
     @classmethod
-    def create(cls, title, run_time, genre_id):
-        movie = cls(title, run_time, genre_id)
+    def create(cls, name, run_time, genre_id):
+        movie = cls(name, run_time, genre_id)
         movie.save()
         return movie
     
@@ -105,7 +105,7 @@ class Movie:
     def instance_from_db(cls, row):
         movie = cls.all.get(row[0])
         if movie:
-            movie.title = row[1]
+            movie.name = row[1]
             movie.run_time = row[2]
             movie.genre_id = row[3]
         else:
@@ -134,13 +134,13 @@ class Movie:
         return cls.instance_from_db(row) if row else None
 
     @classmethod
-    def find_by_title(cls, title):
+    def find_by_name(cls, name):
         sql = """
             SELECT *
             FROM movies
-            WHERE title = ?
+            WHERE name = ?
         """
-        row = CURSOR.execute(sql, (title,)).fetchone()
+        row = CURSOR.execute(sql, (name,)).fetchone()
         return cls.instance_from_db(row) if row else None
 
     @classmethod

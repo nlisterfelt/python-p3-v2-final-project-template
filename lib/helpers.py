@@ -55,22 +55,22 @@ def delete_genre():
 def list_movies():
     movies = Movie.get_all()
     for movie in movies:
-        print(f"{movie.id}: {movie.title}")
+        print(f"{movie.id}: {movie.name}")
 
 def list_movies_by_genre(genre_id):
     movies = Movie.find_movies_by_genre(genre_id)
     for movie in movies:
-        print(f"{movie.id}: {movie.title}")
+        print(f"{movie.id}: {movie.name}")
 
 def find_movie_by_id():
     _id = input("Enter the movie's id: ")
     movie = Movie.find_by_id(_id)
     print(movie) if movie else print(f"Movie {_id} not found.")
 
-def find_movie_by_title():
-    title = input("Enter the movie's title: ")
-    movie = Movie.find_by_title(title)
-    print(movie) if movie else print(f"Movie {title} not found.")
+def find_movie_by_name():
+    name = input("Enter the movie's name: ")
+    movie = Movie.find_by_name(name)
+    print(movie) if movie else print(f"Movie {name} not found.")
 
 def find_movies_by_run_time():
     run_time = input("Enter a number of minutes to see all movies with a run time of at least this number: ")
@@ -78,11 +78,11 @@ def find_movies_by_run_time():
     print(movies) if movies else print(f"No movies found with a run-time of at least {run_time} mins.")
 
 def create_movie():
-    title = input("Enter the movie's title: ")
+    name = input("Enter the movie's name: ")
     run_time = int(input("Enter the movie's run-time in minutes: "))
     genre_id = input("Enter the movie's genre id: ")
     try: 
-        movie = Movie.create(title, run_time, genre_id)
+        movie = Movie.create(name, run_time, genre_id)
         print(f"Success: {movie}")
     except Exception as exc:
         print("Error creating movie: ", exc)
@@ -91,8 +91,8 @@ def update_movie():
     _id = input("Enter the movie's id: ")
     if movie := Movie.find_by_id(_id):
         try: 
-            title = input("Enter the movie's title: ")
-            movie.title = title
+            name = input("Enter the movie's name: ")
+            movie.name = name
             run_time = int(input("Enter the movie's run-time in minutes: "))
             movie.run_time = run_time
             genre_id = input("Enter the movie's genre id: ")

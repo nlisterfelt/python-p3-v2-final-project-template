@@ -9,7 +9,7 @@ from helpers import (
     delete_genre,
     list_movies,
     find_movie_by_id,
-    find_movie_by_title,
+    find_movie_by_name,
     find_movies_by_run_time,
     list_movies_by_genre,
     create_movie,
@@ -25,9 +25,19 @@ def main():
         main_menu()
         choice = input("> ")
         
-        #Selecting a genre
         if choice == "1":
-           
+            genre_choice = 0:
+            while genre_choice != "m":
+                print('''
+~~~~~Genres~~~~~
+
+''')
+                list_genres()
+                print('''
+            
+~~~~~~~~~~~~~~~~
+''')
+            
         elif choice == "e":
             exit_program()
         else:
@@ -36,7 +46,7 @@ def main():
 def main_menu():
     print('''
 
-*****Main Menu*****
+    *****Main Menu*****
 
     Select an option:
     1. List all genres
@@ -44,7 +54,7 @@ def main_menu():
     3. List all movies with at least the run-time entered
     e. Exit the program
 
-*******************
+    *******************
 
 ''')
 

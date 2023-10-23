@@ -37,7 +37,7 @@ def main():
             
 ~~~~~~~~~~~~~~~~
 ''')
-                more_detail_menu()
+                all_genres_menu()
                 genre_choice = input("> ")
 
                 if genre_choice == "i" or genre_choice == "n":
@@ -57,7 +57,7 @@ def main():
             
 ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
 ''')
-                        more_detail_menu()
+                        all_movies_menu()
                         movie_choice = input("> ")
                         if movie_choice == "i":
                             print("ok")
@@ -93,14 +93,38 @@ def main_menu():
 
 ''')
 
-def more_detail_menu():
+def all_menu():
+    print('''
+    Select an option:
+    i. Enter id for more details
+    n. Enter name for more details 
+    c. Create new 
+    m. Back to Main Menu
+    e. Exit the program
+
+----------------------
+
+''')
+
+def genre_menu():
     print('''
     Select an option:
     i. Enter id for more details
     n. Enter name for more details 
     u. Update
-    c. Create new
-    d. Delete
+    d. delete
+    m. Back to Main Menu
+    e. Exit the program
+
+----------------------
+
+''')
+
+def movie_menu():
+    print('''
+    Select an option:
+    u. Update
+    d. delete
     m. Back to Main Menu
     e. Exit the program
 

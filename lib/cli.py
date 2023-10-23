@@ -26,8 +26,8 @@ def main():
         choice = input("> ")
         
         if choice == "1":
-            genre_choice = 0
-            while genre_choice != "m":
+            all_genre_choice = 0
+            while all_genre_choice != "m":
                 print('''
 ~~~~~Genres~~~~~
 
@@ -37,17 +37,17 @@ def main():
             
 ~~~~~~~~~~~~~~~~
 ''')
-                all_genres_menu()
-                genre_choice = input("> ")
+                all_menu()
+                all_genre_choice = input("> ")
 
-                if genre_choice == "i" or genre_choice == "n":
-                    if genre_choice == "i":
+                if all_genre_choice == "i" or all_genre_choice == "n":
+                    if all_genre_choice == "i":
                         genre = find_genre_by_id()
                     else:
                         genre = find_genre_by_name()
-                    movie_choice = 0
+                    genre_choice = 0
 
-                    while movie_choice !="m":
+                    while genre_choice !="m":
                         print(f'''
 ~~~~~Movies for {genre.name}~~~~~
 
@@ -57,17 +57,22 @@ def main():
             
 ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
 ''')
-                        all_movies_menu()
-                        movie_choice = input("> ")
-                        if movie_choice == "i":
+                        genre_menu()
+                        genre_choice = input("> ")
+                        if genre_choice == "i":
                             print("ok")
-                        elif movie_choice == "e":
+                        elif genre_choice == "e":
                             exit_program()
+                        elif genre_choice == "m":
+                            all_genre_choice = "m"
+                            print("Back to Main Menu")
                         else:
                             print("Invalid choice")
-                elif genre_choice == "c":
+                elif all_genre_choice == "c":
                     create_genre()
-                elif genre_choice == "e":
+                elif all_genre_choice == "m":
+                    print("Back to Main Menu")
+                elif all_genre_choice == "e":
                     exit_program()
                 else:
                     print("Invalid choice")

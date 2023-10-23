@@ -61,6 +61,11 @@ def find_movie_by_title():
     movie = Movie.find_by_title(movie)
     print(movie) if movie else print(f"Movie {title} not found.")
 
+def find_movies_by_run_time():
+    run_time = input("Enter a number of minutes to see all movies with a runtime of at least this number: ")
+    movies = Movie.find_at_least_run_time(run_time)
+    print(movies) if movie else print(f"No movies found with a run-time of at least {run_time}")
+
 def create_movie():
     title = input("Enter the movie's title: ")
     run_time = input("Enter the movie's run-time in minutes: ")

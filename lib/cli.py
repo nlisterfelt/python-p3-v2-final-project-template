@@ -11,6 +11,7 @@ from helpers import (
     find_movie_by_id,
     find_movie_by_title,
     find_movies_by_run_time,
+    list_movies_by_genre,
     create_movie,
     update_movie,
     delete_movie,
@@ -50,12 +51,25 @@ def main():
             genre = find_genre_by_id(_id)
             movie_choice = 0
             while movie_choice != "m":
-                print(genre)
-                print('''
+                print(f'''
+                
+        Genre: {genre.name}
 
 -----List of Movies in this Genre-----''')
-                
+                list_movies_by_genre(_id)
                 genre_edit_menu()
+
+                movie_choice = input("> ")
+                if movie_choice == "e":
+                    exit_program()
+                elif movie_choice == "m":
+                    print("Back to main menu.")
+                elif movie_choice == "u":
+                    update_genre(_id)
+                elif movie_choice == "d":
+                    delete_genre(_id)
+                else:
+                    print("Invalid choice")
 
         #Entering genre edit menu
         elif choice =="3":

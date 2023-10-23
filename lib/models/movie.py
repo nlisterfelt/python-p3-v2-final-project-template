@@ -154,11 +154,11 @@ class Movie:
         return[cls.instance_from_db(row) for row in rows]
 
     @classmethod
-    def find_movies_by_genre(cls, genre):
+    def find_movies_by_genre(cls, genre_id):
         sql = """
             SELECT *
             FROM movies
-            WHERE genre = ?
+            WHERE genre_id = ?
         """
-        rows = CURSOR.execute(sql, (genre,)).fetchall()
+        rows = CURSOR.execute(sql, (genre_id,)).fetchall()
         return[cls.instance_from_db(row) for row in rows]

@@ -8,8 +8,11 @@ def list_genres():
         print(f"{genre.id}: {genre.name}")
 
 def find_genre_by_id(_id):
-    genre = Genre.find_by_id(_id).name
-    print(genre) if genre else print(f"Genre {_id} not found.")
+    genre = Genre.find_by_id(_id)
+    if genre:
+        return genre
+    else:
+        print(f"Genre {_id} not found.")
 
 def find_genre_by_name():
     name = input("Enter the genre's name: ")
@@ -48,10 +51,10 @@ def delete_genre():
 def list_movies():
     movies = Movie.get_all()
     for movie in movies:
-        print(movie)
+        print(f"{movie.id}: {movie.title}")
 
-def list_movies_by_genre(genre):
-    movies = Movie.find_movies_by_genre(genre)
+def list_movies_by_genre(genre_id):
+    movies = Movie.find_movies_by_genre(genre_id)
     for movie in movies:
         print(f"{movie.id}: {movie.title}")
 
@@ -68,7 +71,7 @@ def find_movie_by_title():
 def find_movies_by_run_time():
     run_time = input("Enter a number of minutes to see all movies with a run time of at least this number: ")
     movies = Movie.find_at_least_run_time(run_time)
-    print(movies) if movies else print(f"No movies found with a run-time of at least {run_time}")
+    print(movies) if movies else print(f"No movies found with a run-time of at least {run_time} mins.")
 
 def create_movie():
     title = input("Enter the movie's title: ")

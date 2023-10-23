@@ -64,6 +64,13 @@ def main():
                                 print("I will change this to find movie by id.")
                             else:
                                 print("I will change this to find movie by name.")
+                        elif genre_choice == "u":
+                            pass
+                        elif genre_choice == "d":
+                            pass
+                        elif genre_choice == "g":
+                            print("Back to Genre Menu")
+                            genre_choice = "m"
                         elif genre_choice == "e":
                             exit_program()
                         elif genre_choice == "m":
@@ -106,10 +113,10 @@ def main():
                 all_menu()
                 all_movie_choice = input("> ")
 
-                if all_movie_choice == "u":
-                    update_movie()
-                elif all_movie_choice == "d":
-                    delete_movie()
+                if all_movie_choice == "i" or all_movie_choice == "n":
+                    pass
+                elif all_movie_choice == "c":
+                    create_movie()
                 elif all_movie_choice == "m":
                     print("Back to Main Menu")
                 elif all_movie_choice == "e":

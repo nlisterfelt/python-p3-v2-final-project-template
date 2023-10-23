@@ -26,7 +26,7 @@ def main():
         choice = input("> ")
         
         if choice == "1":
-            genre_choice = 0:
+            genre_choice = 0
             while genre_choice != "m":
                 print('''
 ~~~~~Genres~~~~~
@@ -37,30 +37,36 @@ def main():
             
 ~~~~~~~~~~~~~~~~
 ''')
-            more_detail_menu()
-            genre_choice = input("> ")
+                more_detail_menu()
+                genre_choice = input("> ")
 
-            if genre_choice == "i" or genre_choice == "n":
-                if genre_choice == "i":
-                    genre = find_genre_by_id()
-                else:
-                    genre = find_genre_by_name()
-                movie_choice = 0
+                if genre_choice == "i" or genre_choice == "n":
+                    if genre_choice == "i":
+                        genre = find_genre_by_id()
+                    else:
+                        genre = find_genre_by_name()
+                    movie_choice = 0
 
-                while movie_choice !="m":
-                    print('''
+                    while movie_choice !="m":
+                        print('''
 ~~~~~Movies~~~~~
 
 ''')
-                    find_movies_by_genre(genre.id)
-                    print('''
+                        list_movies_by_genre(genre.id)
+                        print('''
             
 ~~~~~~~~~~~~~~~~
 ''')
-                    more_detail_menu()
-                    movie_choice = input("> ")
-            else:
-                print("Invalid choice")
+                        more_detail_menu()
+                        movie_choice = input("> ")
+                        if movie_choice == "i":
+                            print("ok")
+                        else:
+                            print("Invalid choice")
+                else:
+                    print("Invalid choice")
+        elif choice == "3":
+            find_movies_by_run_time()
         elif choice == "e":
             exit_program()
         else:

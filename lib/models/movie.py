@@ -10,7 +10,7 @@ class Movie:
         self.genre_id = genre_id
 
     def __repr__(self):
-        return (f"<Movie {self.id}: {self.title}, {run_time}, Genre ID: {self.genre_id}")
+        return (f"<Movie {self.id}: {self.title}, {self.run_time} mins, Genre ID: {self.genre_id}>")
 
     @property
     def title(self):
@@ -102,7 +102,7 @@ class Movie:
         return movie
     
     @classmethod
-    def instance_from_db(self, row):
+    def instance_from_db(cls, row):
         movie = cls.all.get(row[0])
         if movie:
             movie.title = row[1]

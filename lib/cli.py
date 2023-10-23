@@ -48,21 +48,25 @@ def main():
                     movie_choice = 0
 
                     while movie_choice !="m":
-                        print('''
-~~~~~Movies~~~~~
+                        print(f'''
+~~~~~Movies for {genre.name}~~~~~
 
 ''')
                         list_movies_by_genre(genre.id)
                         print('''
             
-~~~~~~~~~~~~~~~~
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
 ''')
                         more_detail_menu()
                         movie_choice = input("> ")
                         if movie_choice == "i":
                             print("ok")
+                        elif movie_choice == "e":
+                            exit_program()
                         else:
                             print("Invalid choice")
+                elif genre_choice == "e":
+                    exit_program()
                 else:
                     print("Invalid choice")
         elif choice == "3":
@@ -89,7 +93,6 @@ def main_menu():
 
 def more_detail_menu():
     print('''
-
     Select an option:
     i. Enter id for more details
     n. Enter name for more details 

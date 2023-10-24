@@ -63,12 +63,18 @@ def list_movies_by_genre(genre_id):
 def find_movie_by_id():
     _id = input("Enter the movie's id: ")
     movie = Movie.find_by_id(_id)
-    print(movie) if movie else print(f"Movie {_id} not found.")
+    if movie:
+        return movie
+    else:
+        print(f"Movie {_id} not found.")
 
 def find_movie_by_name():
     name = input("Enter the movie's name: ")
     movie = Movie.find_by_name(name)
-    print(movie) if movie else print(f"Movie {name} not found.")
+    if movie:
+        return movie
+    else:
+        print(f"Movie {name} not found.")
 
 def find_movies_by_run_time(run_time):
     movies = Movie.find_at_least_run_time(run_time)

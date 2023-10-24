@@ -68,14 +68,30 @@ def main():
                             else:
                                 movie = find_movie_by_name()
                             movie_choice = 0
-                            movie_menu()
                             while movie_choice != "v":
+                                print(f'''
+-----Movie: {movie.name}-----
+    Run time: {movie.run_time} mins
+    Genre id: {movie.genre_id}''')
+                                movie_menu()
+                                movie_choice = input("> ")
+                                #Movie details - update movie
                                 if movie_choice == "u":
                                     update_movie(movie.id)
+                                #Movie details - delete movie
                                 elif movie_choice == "d":
                                     delete_movie(movie.id)
+                                    movie_choice = "v"
+                                #Movie details - back to all movies
+                                elif movie_choice == "v":
+                                    print("Back to Movie Menu")
+                                    movie_choice = "v"
                                 elif movie_choice == "e":
                                     exit_program()
+                                elif movie_choice == "m":
+                                    movie_choice = "v"
+                                    genre_choice = "g"
+                                    all_genre_choice = "m"
                                 else:
                                     print("Invalid choice")
                         #Genre details - update genre

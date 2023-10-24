@@ -88,8 +88,7 @@ def create_movie():
     except Exception as exc:
         print("Error creating movie: ", exc)
 
-def update_movie():
-    _id = input("Enter the movie's id: ")
+def update_movie(_id):
     if movie := Movie.find_by_id(_id):
         try: 
             name = input("Enter the movie's name: ")
@@ -105,8 +104,7 @@ def update_movie():
     else:
         print(f"Movie {_id} not found.")
 
-def delete_movie():
-    _id = input("Enter the movie's id: ")
+def delete_movie(_id):
     if movie := Movie.find_by_id(_id):
         movie.delete()
         print(f"Success {_id} deleted.")

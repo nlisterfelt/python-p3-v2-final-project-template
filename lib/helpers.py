@@ -31,21 +31,19 @@ def create_genre():
     except Exception as exc:
         print("Error creating genre: ", exc)
 
-def update_genre():
-    _id = input("Enter the genre's id: ")
+def update_genre(_id):
     if genre := Genre.find_by_id(_id):
         try: 
             name = input("Enter the genre's name: ")
             genre.name = name
             genre.update()
-            print(f"Success: {genre}")
+            print(f"Success updating {genre.name}")
         except Exception as exc:
             print("Error updating genre: ")
     else:
         print(f"Genre {_id} not found.")
 
-def delete_genre():
-    _id = input("Enter the genre's id: ")
+def delete_genre(_id):
     if genre := Genre.find_by_id(_id):
         genre.delete()
         print(f"Success {_id} deleted.")

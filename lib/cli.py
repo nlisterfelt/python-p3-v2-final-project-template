@@ -47,7 +47,7 @@ def main():
                         genre = find_genre_by_name()
                     genre_choice = 0
 
-                    while genre_choice !="m":
+                    while genre_choice !="g":
                         print(f'''
 ~~~~~Movies for {genre.name}~~~~~
 
@@ -65,16 +65,17 @@ def main():
                             else:
                                 print("I will change this to find movie by name.")
                         elif genre_choice == "u":
-                            pass
+                            update_genre(genre.id)
                         elif genre_choice == "d":
-                            pass
+                            delete_genre(genre.id)
+                            genre_choice = "g"
                         elif genre_choice == "g":
                             print("Back to Genre Menu")
-                            genre_choice = "m"
                         elif genre_choice == "e":
                             exit_program()
                         elif genre_choice == "m":
                             print("Back to Main Menu")
+                            genre_choice = "g"
                             all_genre_choice = "m"
                         else:
                             print("Invalid choice")

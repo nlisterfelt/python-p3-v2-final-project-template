@@ -11,6 +11,8 @@ def seed_database():
     action = Genre.create("Action")
     Movie.create("The Proposal", 108, rom_com.id)
     Movie.create("27 Dresses", 111, rom_com.id)
+    Movie.create("Dune", 155, action.id)
+    Movie.create("Transformers", 127, action.id)
     Movie.create("Blue Beetle", 127, action.id)
 
 seed_database()

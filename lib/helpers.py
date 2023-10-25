@@ -45,6 +45,9 @@ def update_genre(_id):
 
 def delete_genre(_id):
     if genre := Genre.find_by_id(_id):
+        for movie in Movie.get_all():
+            if movie.genre_id == _id:
+                movie.delete()
         genre.delete()
         print(f"Success {_id} deleted.")
     else:

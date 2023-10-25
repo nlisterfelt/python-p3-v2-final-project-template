@@ -30,13 +30,15 @@ def main():
             all_genre_choice = 0
             while all_genre_choice != "m":
                 print('''
-~~~~~Genres~~~~~
+~~~~~~~~~~~~~~~~~~~~
+       Genres
+~~~~~~~~~~~~~~~~~~~~
 
 ''')
                 list_genres()
                 print('''
             
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
 ''')
                 all_menu()
                 all_genre_choice = input("> ")
@@ -51,7 +53,11 @@ def main():
 
                     while genre_choice !="g":
                         print(f'''
-~~~~~Movies for {genre.name}~~~~~
+
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+    Movies for {genre.name}
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
 
 ''')
                         list_movies_by_genre(genre.id)
@@ -63,6 +69,7 @@ def main():
                         genre_choice = input("> ")
                         #Genre details - choose movie by id or name
                         if genre_choice == "i" or genre_choice == "n":
+                            #One movie
                             if genre_choice == "i":
                                 movie = find_movie_by_id()
                             else:
@@ -70,9 +77,14 @@ def main():
                             movie_choice = 0
                             while movie_choice != "v":
                                 print(f'''
------Movie: {movie.name}-----
+
+------------------------------
+    Movie: {movie.name}
     Run time: {movie.run_time} mins
-    Genre id: {movie.genre_id}''')
+    Genre id: {movie.genre_id}
+------------------------------
+
+''')
                                 movie_menu()
                                 movie_choice = input("> ")
                                 #Movie details - update movie
@@ -89,6 +101,7 @@ def main():
                                 elif movie_choice == "e":
                                     exit_program()
                                 elif movie_choice == "m":
+                                    print("Back to Main Menu")
                                     movie_choice = "v"
                                     genre_choice = "g"
                                     all_genre_choice = "m"
@@ -127,33 +140,79 @@ def main():
             while all_movie_choice != "m":
                 if choice == "2":
                     print('''
-~~~~~Movies~~~~~
+
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+        Movies
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
 
 ''')
                     list_movies()
                     print('''
             
-~~~~~~~~~~~~~~~~
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
 ''')
                 else: 
                     run_time = input("Enter a number of minutes to see all movies with a run time of at least this number: ")
                     print(f'''
-~~~~~Movies with a run time of at least {run_time} mins~~~~~
+
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~~-~-~-~-~-~-~-~-~-~-~-~
+    Movies with a run time of at least {run_time} mins
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~~-~-~-~-~-~-~-~-~-~-~-~
 
 ''')
                     find_movies_by_run_time(run_time)
                     print('''
             
-~~~~~~~~~~~~~~~~
+~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~~-~-~-~-~-~-~-~-~-~-~-~
 ''')
                 all_menu()
                 all_movie_choice = input("> ")
                 #All movie - choose movie by id or name
                 if all_movie_choice == "i" or all_movie_choice == "n":
-                    pass
+                    #One movie
+                    if all_movie_choice == "i":
+                        movie = find_movie_by_id()
+                    else:
+                        movie = find_movie_by_name()
+                    movie_choice = 0
+                    while movie_choice != "v":
+                        if not movie:
+                            movie_choice = "v"
+                        print(f'''
+
+------------------------------
+    Movie: {movie.name}
+    Run time: {movie.run_time} mins
+    Genre id: {movie.genre_id}
+------------------------------
+
+''')
+                        movie_menu()
+                        movie_choice = input("> ")
+                        #Movie details - update movie
+                        if movie_choice == "u":
+                            update_movie(movie.id)
+                        #Movie details - delete movie
+                        elif movie_choice == "d":
+                            delete_movie(movie.id)
+                            movie_choice = "v"
+                        #Movie details - back to all movies
+                        elif movie_choice == "v":
+                            print("Back to Movie Menu")
+                            choice = "2"
+                        elif movie_choice == "e":
+                            exit_program()
+                        elif movie_choice == "m":
+                            print("Back to Main Menu")
+                            movie_choice = "v"
+                            all_movie_choice = "m"
+                        else:
+                            print("Invalid choice")
                 #All movie - create new movie
                 elif all_movie_choice == "c":
                     create_movie()
+                    choice = "2"
                 elif all_movie_choice == "m":
                     print("Back to Main Menu")
                 elif all_movie_choice == "e":
@@ -166,10 +225,13 @@ def main():
         else:
             print("Invalid choice")
 
+
 def main_menu():
     print('''
 
-    *****Main Menu*****
+    ********************
+        Main Menu
+    ********************
 
     Select an option:
     1. List all genres
@@ -177,12 +239,15 @@ def main_menu():
     3. List all movies with at least the run-time entered
     e. Exit the program
 
-    *******************
+    ********************
 
 ''')
 
 def all_menu():
     print('''
+    
+    ----------------------
+
     Select an option:
     i. Enter id for more details
     n. Enter name for more details 
@@ -190,12 +255,15 @@ def all_menu():
     m. Back to Main Menu
     e. Exit the program
 
-----------------------
+    ----------------------
 
 ''')
 
 def genre_menu():
     print('''
+    
+    ----------------------
+    
     Select an option:
     i. Enter id for more details
     n. Enter name for more details 
@@ -205,12 +273,15 @@ def genre_menu():
     m. Back to Main Menu
     e. Exit the program
 
-----------------------
+    ----------------------
 
 ''')
 
 def movie_menu():
     print('''
+    
+    ----------------------
+    
     Select an option:
     u. Update
     d. delete
@@ -218,7 +289,7 @@ def movie_menu():
     m. Back to Main Menu
     e. Exit the program
 
-----------------------
+    ----------------------
 
 ''')
 

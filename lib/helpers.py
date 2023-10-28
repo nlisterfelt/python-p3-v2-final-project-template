@@ -8,7 +8,8 @@ def list_genres():
         print(f"{genre.id}: {genre.name}")
 
 def find_genre_by_id():
-    _id = int(input("Enter the genre's id: "))
+    _id = input("Enter the genre's id: ")
+    print(_id)
     genre = Genre.find_by_id(_id)
     if genre:
         return genre
@@ -89,10 +90,10 @@ def find_movies_by_run_time(run_time):
 
 def create_movie():
     name = input("Enter the movie's name: ")
-    run_time = int(input("Enter the movie's run-time in minutes: "))
+    run_time = input("Enter the movie's run-time in minutes: ")
     genre_id = input("Enter the movie's genre id: ")
     try: 
-        movie = Movie.create(name, run_time, genre_id)
+        movie = Movie.create(name, int(run_time), genre_id)
         print(f"Success: {movie}")
     except Exception as exc:
         print("Error creating movie: ", exc)
